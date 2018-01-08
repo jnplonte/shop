@@ -1,0 +1,33 @@
+
+<div class="row justify-content-center login-component">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+        <form name="login-form" (ngSubmit)="f.form.valid && onLogIn()" #f="ngForm" class="login-component_form card card-box" novalidate autocomplete="off">
+            <div class="login-component_form-field">
+                <h2>Login</h2>
+            </div>
+
+            <mat-form-field class="login-component_form-field" [hideRequiredMarker]="true">
+                <input matInput type="text" placeholder="Username" [(ngModel)]="model.username" required name="username"/>
+                <mat-error *ngIf="f.submitted && !model.username">
+                    Username is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="login-component_form-field" [hideRequiredMarker]="true">
+                <input matInput type="password" placeholder="Password" [(ngModel)]="model.password" required name="password"/>
+                <mat-error *ngIf="f.submitted && !model.password">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="login-component_form-button row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    <button mat-raised-button [disabled]="loading" color="primary" class="login-btn width-100">
+                        <mat-spinner [hidden]="!loading" class="loading-btn" [diameter]="25"></mat-spinner>
+                        <span [hidden]="loading">Login</span>
+                    </button>
+                </div>
+            </div>  
+        </form>
+    </div>
+</div>
