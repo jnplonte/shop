@@ -38,35 +38,8 @@ $app-theme: mat-light-theme(
     }
 }
 
-
-.mat-datepicker-content {
-    background-color: $white;
-    color: $black;
-    .mat-button, 
-    .mat-icon-button {
-        background: transparent;
-        &:hover,
-        &:focus,
-        &:active {
-            outline: none;
-        }
-    }
-    .mat-calendar-body-cell-content {
-        border-color: transparent;
-    }
-    .mat-calendar-body-selected {
-        border-color: $grey;
-        background: $light-grey;
-    }
-    .mat-calendar-body-disabled {
-        color: $grey;
-    }
-    .mat-calendar-table-header tr:nth-child(2) .mat-calendar-table-header-divider {
-        border-bottom: 1px solid $black;
-    }
-    .mat-calendar-body-cell-content:hover {
-        background: $light-grey;
-    }
+.mat-menu-content {
+    padding: $base-padding;
 }
 
 .mat-tab-body-content {
@@ -74,7 +47,7 @@ $app-theme: mat-light-theme(
     backface-visibility: visible !important;
 }
 
-.toolbar-component_user-menu {
+.toolbar-component_menu {
     background: $white;
     .mat-menu-item {
         text-decoration: none;
@@ -90,7 +63,6 @@ $app-theme: mat-light-theme(
         }
     }
 }
-
 
 .width-100 {
     width: 100%;

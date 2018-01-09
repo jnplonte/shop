@@ -3,6 +3,6 @@
 	"companyName": "Shop",
 	"api":{
 		"logIn": "http://5a53845c77e1d20012fa06e7.mockapi.io/api/v1/login",
-		"products": "http://5a53845c77e1d20012fa06e7.mockapi.io/api/v1/products"
+		"product": "http://5a53845c77e1d20012fa06e7.mockapi.io/api/v1/products"
 	}
 }

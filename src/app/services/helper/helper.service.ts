@@ -7,17 +7,17 @@ export class HelperService {
 
     formatCurrency(value?: any, pattern: any = ',') {
         if (value) {
-            return value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + pattern);
+            return value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + pattern) + '.00';
         } else {
-            return '';
+            return '0.00';
         }
     }
 
     formatNumber(value?: any, pattern: any = ',') {
         if (value) {
-            return value.replace(new RegExp(pattern, 'g'), '');
+            return value.replace(new RegExp(pattern, 'g'), '').toFixed(0);
         } else {
-            return '';
+            return '0';
         }
     }
 

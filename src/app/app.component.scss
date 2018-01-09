@@ -8,6 +8,24 @@
     }
     .side-nav {
         padding: $base-padding;
-        min-width: 200px;
+        min-width: 220px;
+        .mat-menu-item {
+            color: $black;
+            text-decoration: none;
+            .mat-icon {
+                top: 7px;
+                position: relative;
+                vertical-align: initial;
+            }
+            &:hover,
+            &:active {
+                background: none;
+                text-decoration: none;
+            }
+        }
+    }
+    .log-out {
+        position: absolute;
+        bottom: 0px;
     }
 } 

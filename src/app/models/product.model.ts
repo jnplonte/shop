@@ -1,4 +1,4 @@
-export class mainModel {
+export class productModel {
     'id': number;
     'name': string;
     'description': string;

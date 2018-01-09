@@ -66,7 +66,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress",
     "test": "karma start ./config/karma.common.js",
-    "lint": "tslint --type-check --project 'src/tsconfig.json' --config 'tslint.json'",
+    "lint": "tslint --project 'src/tsconfig.json' --config 'tslint.json'",
     "build": "rimraf dist && webpack --config ./config/webpack.prod.js --progress --profile --bail",
     "generate:component": "node ./config/generate.js \"component\"",
     "generate:directive": "node ./config/generate.js \"directive\"",

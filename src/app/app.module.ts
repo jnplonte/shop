@@ -29,6 +29,11 @@ import { AlertComponent } from './components/alert/alert.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { GuideComponent } from './components/guide/guide.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProductService } from './services/product/product.service';
+
+
+import { ProductFilterPipe } from './pipes/product-filter/product-filter.pipe';
+import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe';
 
 export class jsonTranslateLoader implements TranslateLoader {
     private translation: Object = {};
@@ -75,14 +80,15 @@ const appTranslate: Object = {
                   TranslateModule.forRoot(appTranslate),
                   RouterModule.forRoot(appRoutes, { useHash: true }) ],
   declarations: [ AppComponent,
-                  LogInComponent, PageNotFoundComponent, DashboardComponent, AlertComponent, ToolbarComponent, GuideComponent, ProfileComponent ],
+                  LogInComponent, PageNotFoundComponent, DashboardComponent, AlertComponent, ToolbarComponent, GuideComponent, ProfileComponent, ProductFilterPipe, FormatCurrencyPipe ],
   providers:    [ AuthGuard, UnAuthGuard, Title,
+                  {provide: MATERIAL_SANITY_CHECKS,  useValue: false},
                   {provide: 'configService', useFactory: () => ConfigService.getInstance()},
                   {provide: 'helperService', useClass: HelperService},
                   {provide: 'alertService', useClass: AlertService},
                   {provide: 'authenticationService', useClass: AuthenticationService},
                   {provide: 'translateService', useClass: TranslateService},
-                  {provide: MATERIAL_SANITY_CHECKS,  useValue: false}
+                  {provide: 'productService', useClass: ProductService},
                 ],
   bootstrap:    [ AppComponent ]
 })

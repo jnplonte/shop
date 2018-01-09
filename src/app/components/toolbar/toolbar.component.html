@@ -4,21 +4,11 @@
         <a href="javascript:void(0);" [routerLink]="['/']" class="company-title">{{companyName}}</a>
         <span class="spacer"></span>
         <span class="user-title elipsis">{{userName}} | <small>{{clock | async | date:'MMM d, y h:mm a'}}</small></span>
-        <mat-icon svgIcon="more_vert" [matMenuTriggerFor]="menu"></mat-icon>
-        <mat-menu #menu="matMenu" class="toolbar-component_user-menu">
-            <a href="javascript:void(0);" [routerLink]="['/profile']" mat-menu-item>
-                <mat-icon svgIcon="face"></mat-icon><span>Profile</span>
-            </a>
-            <a href="javascript:void(0);" [routerLink]="['/cart']" mat-menu-item>
-                <mat-icon svgIcon="cart"></mat-icon><span>Cart</span>
-            </a>
-            <a href="javascript:void(0);" [routerLink]="['/guide']" mat-menu-item>
-                <mat-icon svgIcon="help"></mat-icon><span>Guide</span>
-            </a>
-            <hr class="no-margin" />
-            <a href="javascript:void(0);" (click)="onLogOut()" mat-menu-item>
-                <mat-icon svgIcon="exit"></mat-icon><span>Logout</span>
-            </a>
+
+        <span *ngIf="cartLength >= 1">{{cartLength}}</span>
+        <mat-icon svgIcon="cart" [matMenuTriggerFor]="menu"></mat-icon>
+        <mat-menu #menu="matMenu" class="toolbar-component_menu">
+            <span>cart is empty!</span>
         </mat-menu>
     </mat-toolbar>
 </div>

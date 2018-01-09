@@ -23,8 +23,7 @@ export class AuthenticationService {
         };
     }
 
-    login(username: string, password: string, isAdmin: boolean = false): Observable<userModel[]> {
-
+    login(username: string, password: string): Observable<userModel[]> {
         username = this.helperService.cleanData(username);
         password = this.helperService.cleanData(password);
 
@@ -45,7 +44,7 @@ export class AuthenticationService {
         return this.helperService.clearStorage();
     }
 
-    get isLogin(){
+    get isLogin() {
         return (this.helperService.readStorage('auth-token')) ? true : false;
     }
 }

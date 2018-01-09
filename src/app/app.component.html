@@ -6,7 +6,15 @@
     </div>
     <mat-sidenav-container *ngIf="!configError">
         <mat-sidenav class="side-nav" #sidenav>
-            MENU BAR
+            <a href="javascript:void(0);" (click)="sidenav.toggle()" [routerLink]="['/profile']" mat-menu-item>
+                <mat-icon svgIcon="face"></mat-icon><span>Profile</span>
+            </a>
+            <a href="javascript:void(0);" (click)="sidenav.toggle()"  [routerLink]="['/guide']" mat-menu-item>
+                <mat-icon svgIcon="help"></mat-icon><span>Guide</span>
+            </a>
+            <a href="javascript:void(0);" (click)="sidenav.toggle(); onLogOut()" class="log-out" mat-menu-item>
+                <mat-icon svgIcon="exit"></mat-icon><span>Logout</span>
+            </a>
         </mat-sidenav>
                
         <toolbar [sidenavRef]="sidenav"></toolbar>

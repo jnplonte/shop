@@ -11,24 +11,27 @@ import { Observable } from 'rxjs/Observable';
 export class ToolbarComponent implements OnInit {
     @Input() private sidenavRef: any;
 
+    private cartLength: number = 0;
+
     userData: Object = {};
+
     companyName: string = '';
 
     clock: Observable<any>;
 
-    constructor(@Inject('configService') private configService: any, @Inject('alertService') private alertService: any, @Inject('authenticationService') private authenticationService: any, @Inject('helperService') private helperService: any, private router: Router) {
+    constructor(@Inject('configService') private configService: any, @Inject('productService') private productService: any, @Inject('authenticationService') private authenticationService: any, @Inject('helperService') private helperService: any, private router: Router) {
         this.companyName = this.configService.data.companyName;
         this.clock = Observable.interval(100).map(() => new Date());
     }
 
     ngOnInit() {
         this.sidenavRef.close();
-    }
 
-    onLogOut() {
-        this.authenticationService.logout();
-        this.router.navigate(['/log-in']).then(() => {
-            this.alertService.success('logout success');
+        let cartRawList: Array<any> = this.helperService.readStorage('cart-list') || [];
+        this.cartLength = cartRawList.length;
+
+        this.productService.cartList.subscribe(product => {
+            this.cartLength = product.length;
         });
     }
 
@@ -36,7 +39,7 @@ export class ToolbarComponent implements OnInit {
         return this.authenticationService.isLogin;
     }
 
-    get userName() {
+    get userName(): string {
         return this.helperService.readStorage('auth-token').firstName || 'User';
     }
 }

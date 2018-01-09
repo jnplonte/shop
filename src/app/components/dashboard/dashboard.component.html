@@ -1,7 +1,33 @@
 <div class="row dashboard-component">
     <div class="col-12">
         <div class="card">
-          <p>DASHBOARD</p>
+          <p class="bold">PRODUCTS</p>
+          <div class="row">
+            <mat-form-field class="col-12" [hideRequiredMarker]="true">
+                <input matInput #txtProductName placeholder="Search Product Name" name="productName">
+            </mat-form-field>
+          </div>
+          <div class="product-container">
+              <div class="row">
+                  <div *ngFor="let product of allProduct | productFilter: txtProductName.value" class="product-list col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card card-box">
+                        <img class="image" src="{{product.image}}" alt="{{product.name}}" />
+                        <h4>Name: {{product.name}}</h4>
+                        <p class="price">P {{product.price | formatCurrency}}</p>
+                        <p>{{product.description}}</p>
+                        <div class="row">
+                            <div class="col-7">
+                                <button class="btn" mat-raised-button (click)="addCart(product.id, product.name, qty.value)">Add Cart</button>
+                            </div>
+                            <div class="col-5">
+                                <span class="qty-text">QTY:</span>
+                                <input type="number" class="qty" id="qty{{product.id}}" name="qty{{product.id}}" #qty [value]="1" [min]="1" [max]="99" />
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
         </div>
     </div>
   </div>

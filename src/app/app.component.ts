@@ -16,7 +16,7 @@ export class AppComponent {
     appActive: boolean = true;
     configError: boolean = false;
 
-    constructor(private title: Title, private router: Router, @Inject('translateService') private translateService: any, @Inject('configService') private configService: any, private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+    constructor(private title: Title, private router: Router, @Inject('alertService') private alertService: any, @Inject('authenticationService') private authenticationService: any, @Inject('translateService') private translateService: any, @Inject('configService') private configService: any, private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
         this.translateService.setDefaultLang('default');
 
         this.configError = (typeof(configService.data.hasError) !== 'undefined' && configService.data.hasError === 'true');
@@ -61,5 +61,12 @@ export class AppComponent {
         this.iconRegistry.addSvgIcon('cart', this.sanitizer.bypassSecurityTrustResourceUrl(require('./../img/icons/cart.svg')));
         this.iconRegistry.addSvgIcon('help', this.sanitizer.bypassSecurityTrustResourceUrl(require('./../img/icons/help.svg')));
         this.iconRegistry.addSvgIcon('exit', this.sanitizer.bypassSecurityTrustResourceUrl(require('./../img/icons/exit.svg')));
+    }
+
+    onLogOut() {
+        this.authenticationService.logout();
+        this.router.navigate(['/log-in']).then(() => {
+            this.alertService.success('logout success');
+        });
     }
 }

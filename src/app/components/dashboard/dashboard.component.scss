@@ -2,4 +2,44 @@
 
 .dashboard-component {
     margin-top: $base-margin;
+    .product-container {
+        .product-list {
+            margin: 15px 0px 15px 0px;
+        }
+        .card {
+            position: relative;
+            background: $white;
+            .btn {
+                width: 100%;
+                &:focus {
+                    outline: none;
+                }
+            }
+            .price {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                font-weight: 600;
+                background: $white;
+                padding: $base-padding;
+            }
+            .image {
+                width: 100%;
+                max-height: 200px;
+            }
+            .qty {
+                max-width: 65px;
+                height: 36px;
+                padding: 5px;
+                width: 100%;
+                border: 1px solid $black;
+            }
+            .qty-text {
+                display: none;
+                @include media(display-lg) {
+                    display: inline-block;
+                }
+            }
+        }
+    }
 }
