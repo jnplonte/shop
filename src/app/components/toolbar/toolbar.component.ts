@@ -17,12 +17,12 @@ export class ToolbarComponent implements OnInit {
     clock: Observable<any>;
 
     constructor(@Inject('configService') private configService: any, @Inject('alertService') private alertService: any, @Inject('authenticationService') private authenticationService: any, @Inject('helperService') private helperService: any, private router: Router) {
-        this.companyName = configService.data.companyName;
+        this.companyName = this.configService.data.companyName;
         this.clock = Observable.interval(100).map(() => new Date());
     }
 
-    ngOnInit() { 
-      
+    ngOnInit() {
+        this.sidenavRef.close();
     }
 
     onLogOut() {

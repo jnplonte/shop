@@ -3,7 +3,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs/Observable';
 import { MATERIAL_SANITY_CHECKS } from '@angular/material';
 
@@ -81,6 +81,7 @@ const appTranslate: Object = {
                   {provide: 'helperService', useClass: HelperService},
                   {provide: 'alertService', useClass: AlertService},
                   {provide: 'authenticationService', useClass: AuthenticationService},
+                  {provide: 'translateService', useClass: TranslateService},
                   {provide: MATERIAL_SANITY_CHECKS,  useValue: false}
                 ],
   bootstrap:    [ AppComponent ]

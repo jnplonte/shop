@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dashboard',
@@ -12,6 +12,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 }

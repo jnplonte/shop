@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { userModel }  from './../../models/user.model';
 
-const httpOptions = {
+const httpOptions: Object = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
@@ -14,10 +14,10 @@ export class AuthenticationService {
     private url: string = '';
 
     constructor(private http: HttpClient, @Inject('configService') private configService: any, @Inject('helperService') private helperService: any) {
-        this.url = configService.data.api.logIn;
+        this.url = this.configService.data.api.logIn;
     }
 
-    private handleError<T> (operation = 'operation', result?: T) {
+    private handleError<T> (operation: string = 'operation', result?: T) {
         return (error: any): Observable<T> => {
           return of(result as T);
         };
@@ -30,7 +30,7 @@ export class AuthenticationService {
 
         return this.http.post<userModel[]>(this.url, {username: username, password: username}, httpOptions).pipe(
             map((result) => {
-                if(typeof(result) !== 'undefined' && result['status'] === 'success' ) {
+                if (typeof(result) !== 'undefined' && result['status'] === 'success' ) {
                     return result['data'][0];
                 }
             }),

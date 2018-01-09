@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
     selector: 'app-shop',
@@ -16,8 +16,8 @@ export class AppComponent {
     appActive: boolean = true;
     configError: boolean = false;
 
-    constructor(private title: Title, private router: Router, translate: TranslateService, @Inject('configService') private configService: any, private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
-        translate.setDefaultLang('default');
+    constructor(private title: Title, private router: Router, @Inject('translateService') private translateService: any, @Inject('configService') private configService: any, private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+        this.translateService.setDefaultLang('default');
 
         this.configError = (typeof(configService.data.hasError) !== 'undefined' && configService.data.hasError === 'true');
 
@@ -37,7 +37,7 @@ export class AppComponent {
     }
 
     private getTitle(state: any, parent: any) {
-        let data: any = [], companyName: string = this.configService.data.companyName || 'Shop'
+        let data: any = [], companyName: string = this.configService.data.companyName || 'Shop';
         if (parent && parent.snapshot.data && parent.snapshot.data.title) {
             data.push(companyName + ' | ' + parent.snapshot.data.title);
         }

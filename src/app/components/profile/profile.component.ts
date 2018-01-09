@@ -8,7 +8,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class ProfileComponent implements OnInit {
     userData: Object = {};
 
-    constructor(@Inject('configService') private configService: any,  @Inject('helperService') private helperService: any) {
+    constructor(@Inject('helperService') private helperService: any) {
 
     }
 

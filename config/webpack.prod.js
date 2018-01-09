@@ -46,12 +46,8 @@ module.exports = webpackMerge(commonConfig, {
     }),
 
     new CopyWebpackPlugin([
-      // { from: 'config/site/client/*.json' },
-      { from: 'config/site/language/*.json' },
-      { from: 'config/electron/icons/*' },
-      { from: 'config/electron/main-site.js', to: 'main-site.js' }
-      // { from: 'config/electron/setup-events.js', to: 'setup-events.js' },
-      // { from: 'config/electron/build-windows.js', to: 'build-windows.js' }
+      { from: 'config/site/client/*.json' },
+      { from: 'config/site/language/*.json' }
     ], {
         ignore: [
             'test-*.json'

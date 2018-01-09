@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ConfigService {
-    private static encyptionKey: string = 'shop-secret-key';
-
     private static configData: Object = {
         'env': 'development',
         'data': {},

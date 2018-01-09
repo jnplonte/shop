@@ -8,7 +8,8 @@ module.exports = function (config) {
 
     files: [
       {pattern: './karma-test-shim.js', watched: false},
-      {pattern: './site/test-config.json', watched:  true, served: true, included: false}
+      {pattern: './site/test-config.json', watched:  true, served: true, included: false},
+      {pattern: './site/language/english.json', watched:  true, served: true, included: false}
     ],
 
     preprocessors: {
