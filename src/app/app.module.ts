@@ -34,6 +34,7 @@ import { ProductService } from './services/product/product.service';
 
 import { ProductFilterPipe } from './pipes/product-filter/product-filter.pipe';
 import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe';
+import { CartComponent } from './components/cart/cart.component';
 
 export class jsonTranslateLoader implements TranslateLoader {
     private translation: Object = {};
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     { path: '', component: DashboardComponent, canActivate: [AuthGuard], data: {title: 'Dashboard'}},
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {title: 'Profile'}},
     { path: 'guide', component: GuideComponent, canActivate: [AuthGuard], data: {title: 'Guide'}},
+    { path: 'cart', component: CartComponent, canActivate: [AuthGuard], data: {title: 'Cart'}},
 
     { path: 'log-in', component: LogInComponent, canActivate: [UnAuthGuard], data: {title: 'Log In'} },
 
@@ -80,7 +82,7 @@ const appTranslate: Object = {
                   TranslateModule.forRoot(appTranslate),
                   RouterModule.forRoot(appRoutes, { useHash: true }) ],
   declarations: [ AppComponent,
-                  LogInComponent, PageNotFoundComponent, DashboardComponent, AlertComponent, ToolbarComponent, GuideComponent, ProfileComponent, ProductFilterPipe, FormatCurrencyPipe ],
+                  LogInComponent, PageNotFoundComponent, DashboardComponent, AlertComponent, ToolbarComponent, GuideComponent, ProfileComponent, ProductFilterPipe, FormatCurrencyPipe, CartComponent ],
   providers:    [ AuthGuard, UnAuthGuard, Title,
                   {provide: MATERIAL_SANITY_CHECKS,  useValue: false},
                   {provide: 'configService', useFactory: () => ConfigService.getInstance()},

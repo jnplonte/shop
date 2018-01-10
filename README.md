@@ -8,6 +8,7 @@
 * typescript: [https://webpack.github.io/](https://webpack.github.io/)
 * lodash: [https://lodash.com/](https://lodash.com/)
 * sass: [http://sass-lang.com/](http://sass-lang.com/)
+* material: [https://material.io/](https://material.io/)
 * webpack: [https://www.typescriptlang.org/](https://www.typescriptlang.org/)
 * karma: [https://karma-runner.github.io](https://karma-runner.github.io/1.0/index.html)
 
@@ -18,7 +19,7 @@
 - install npm dependencies by running `npm install`
 
 
-## Creating blueprints
+## Creating Blueprints
 - component : `npm run generate:component -- name-of-component`
 - directive : `npm run generate:directive -- name-of-directive`
 - pipe : `npm run generate:pipe -- name-of-pipe`
@@ -30,8 +31,8 @@
 
 
 ## Testing
-- run `npm test`
-- run `npm run lint`
+- run `npm run test` -> this will run unit testing
+- run `npm run lint` -> this will run typescript linter
 
 
 ## Building Production

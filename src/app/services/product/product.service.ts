@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable, Subject }  from 'rxjs/Rx';
 import { of } from 'rxjs/observable/of';
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { productModel }  from './../../models/product.model';
 
@@ -37,7 +37,7 @@ export class ProductService {
     getProduct(id: number): Observable<productModel[]> {
         id = this.helperService.cleanData(id);
 
-        return this.http.get<productModel[]>(this.url+ '/' + id).pipe(
+        return this.http.get<productModel[]>(this.url + '/' + id).pipe(
             map((result) => {
                 if (typeof(result) !== 'undefined' && result['status'] === 'success' ) {
                     return result['data'];
@@ -49,7 +49,7 @@ export class ProductService {
 
     addCartProduct(id: number, name: string, qty: number = 1) {
         let cartRawList: Array<any> = this.helperService.readStorage('cart-list') || [];
-        if (cartRawList.find((elm) => { return elm.id === id })) {
+        if (cartRawList.find((elm) => { return elm.id === id; })) {
             cartRawList.map((elm) => {
                 if (elm.id === id) {
                     elm.quantity = Number(elm.quantity) + Number(qty);

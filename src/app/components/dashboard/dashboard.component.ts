@@ -8,7 +8,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class DashboardComponent implements OnInit {
     private allProducts: Array<any> = [];
 
-    constructor(@Inject('productService') private productService: any, @Inject('alertService') private alertService: any,) {
+    constructor(@Inject('productService') private productService: any, @Inject('alertService') private alertService: any) {
 
     }
 

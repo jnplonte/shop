@@ -10,6 +10,6 @@ export class FormatCurrencyPipe implements PipeTransform {
     }
 
     transform(currency?: number, currencyPattern: string = ','): string {
-        return this.helperService.formatCurrency(currency, currencyPattern) || '';
+        return this.helperService.formatCurrency(currency.toString(), currencyPattern) || '';
     }
 }

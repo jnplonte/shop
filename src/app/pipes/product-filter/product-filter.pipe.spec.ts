@@ -1,8 +1,13 @@
 import { ProductFilterPipe } from './product-filter.pipe';
 
 describe('ProductFilterPipe', () => {
-  it('create an instance', () => {
-    const pipe = new ProductFilterPipe();
-    expect(pipe).toBeTruthy();
-  });
+    let pipe: ProductFilterPipe;
+
+    beforeEach(() => {
+        pipe = new ProductFilterPipe();
+    });
+
+    it('should create pipe', () => {
+        expect(pipe).toBeDefined();
+    });
 });

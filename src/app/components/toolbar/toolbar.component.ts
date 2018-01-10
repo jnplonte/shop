@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -19,13 +18,15 @@ export class ToolbarComponent implements OnInit {
 
     clock: Observable<any>;
 
-    constructor(@Inject('configService') private configService: any, @Inject('productService') private productService: any, @Inject('authenticationService') private authenticationService: any, @Inject('helperService') private helperService: any, private router: Router) {
+    constructor(@Inject('configService') private configService: any, @Inject('productService') private productService: any, @Inject('authenticationService') private authenticationService: any, @Inject('helperService') private helperService: any) {
         this.companyName = this.configService.data.companyName;
         this.clock = Observable.interval(100).map(() => new Date());
     }
 
     ngOnInit() {
-        this.sidenavRef.close();
+        if (this.sidenavRef) {
+            this.sidenavRef.close();
+        }
 
         let cartRawList: Array<any> = this.helperService.readStorage('cart-list') || [];
         this.cartLength = cartRawList.length;
