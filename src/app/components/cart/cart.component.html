@@ -44,7 +44,6 @@
             </div>
             <div class="col-12 col-sm-6 col-md-5 col-lg-4">
               <div class="product-list">
-                <h3 *ngIf="cartLength == 0">CART IS EMPTY</h3>
                   <div *ngIf="cartLength >= 1" class="cart-product">
                       <div *ngFor="let cartProduct of cartData" class="row">
                           <div class="col-12">
