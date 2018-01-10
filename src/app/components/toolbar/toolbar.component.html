@@ -5,10 +5,35 @@
         <span class="spacer"></span>
         <span class="user-title elipsis">{{userName}} | <small>{{clock | async | date:'MMM d, y h:mm a'}}</small></span>
 
-        <span *ngIf="cartLength >= 1">{{cartLength}}</span>
+        <span class="notify-bubble" *ngIf="cartLength >= 1">{{cartLength}}</span>
         <mat-icon svgIcon="cart" [matMenuTriggerFor]="menu"></mat-icon>
         <mat-menu #menu="matMenu" class="toolbar-component_menu">
-            <span>cart is empty!</span>
+            <h3 *ngIf="cartLength == 0">CART IS EMPTY</h3>
+            <div *ngIf="cartLength >= 1" class="cart-product">
+                <h3>CART</h3>
+                <hr />
+                <div *ngFor="let cartProduct of cartData" class="row">
+                    <div class="col-12">
+                        <img class="image" src="{{cartProduct.image}}" alt="{{cartProduct.name}}" />
+                        <h4 class="pname">{{cartProduct.name}}</h4>
+                    </div>
+                    <div class="col-6">
+                        <p class="no-margin">Quantity: {{cartProduct.quantity}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="no-margin">Price: {{cartProduct.totalPrice | formatCurrency}}</p>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-6">
+                        <p class="no-margin total">Total: {{cartTotalPrice | formatCurrency}}</p>
+                    </div>
+                    <div class="col-6">
+                        <a href="javascript:void(0);" class="cart" [routerLink]="['/cart']" mat-raised-button color="primary">Check Out</a>
+                    </div>
+                </div>
+            </div>
         </mat-menu>
     </mat-toolbar>
 </div>

@@ -12,6 +12,12 @@
 * webpack: [https://www.typescriptlang.org/](https://www.typescriptlang.org/)
 * karma: [https://karma-runner.github.io](https://karma-runner.github.io/1.0/index.html)
 
+## Mock API
+* can be found on `{root}\config\site\client\config.json`
+* **[GET]**  `http://5a53845c77e1d20012fa06e7.mockapi.io/api/v1/products`
+* **[POST]**  `http://5a53845c77e1d20012fa06e7.mockapi.io/api/v1/login`
+* **[POST]**  `http://5a53845c77e1d20012fa06e7.mockapi.io/api/v1/checkout`
+
 
 ## Installation
 - install typescript globally `npm install -g typescript`

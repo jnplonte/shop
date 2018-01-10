@@ -19,7 +19,7 @@
                             <div class="col-6">
                                 <button class="btn" mat-raised-button (click)="addCart(product.id, product.name, qty.value)">Add Cart</button>
                             </div>
-                            <div class="col-6 pull-right">
+                            <div class="col-6 text-right">
                                 <span class="qty-text">QTY:</span>
                                 <input type="number" class="qty" id="qty{{product.id}}" name="qty{{product.id}}" #qty [value]="1" [min]="1" [max]="99" />
                             </div>

@@ -2,6 +2,8 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
+import * as _ from 'lodash';
+
 @Component({
     selector: 'toolbar',
     templateUrl: './toolbar.component.html',
@@ -10,9 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class ToolbarComponent implements OnInit {
     @Input() private sidenavRef: any;
 
-    private cartLength: number = 0;
-
-    userData: Object = {};
+    cartData: Array<any> = [];
 
     companyName: string = '';
 
@@ -28,12 +28,24 @@ export class ToolbarComponent implements OnInit {
             this.sidenavRef.close();
         }
 
-        let cartRawList: Array<any> = this.helperService.readStorage('cart-list') || [];
-        this.cartLength = cartRawList.length;
-
         this.productService.cartList.subscribe(product => {
-            this.cartLength = product.length;
+            this.cartData = [];
+            if (product.length >= 1) {
+                product.forEach(data => {
+                    this.productService.getProduct(data.id).subscribe((productData) => {
+                        productData = productData[0];
+                        productData.quantity = data.quantity;
+                        productData.totalPrice = Number(productData.price) * Number(data.quantity);
+
+                        if (_.findIndex(this.cartData, productData) === -1) {
+                            this.cartData.push(productData);
+                        }
+                    });
+                });
+            }
         });
+
+        this.productService.getInitCartProduct();
     }
 
     get isVisible() {
@@ -42,5 +54,15 @@ export class ToolbarComponent implements OnInit {
 
     get userName(): string {
         return this.helperService.readStorage('auth-token').firstName || 'User';
+    }
+
+    get cartLength(): number {
+        return this.cartData.length;
+    }
+
+    get cartTotalPrice(): number {
+        return this.cartData.map(item => item.totalPrice).reduce((prev, next) => {
+            return Number(prev) + Number(next);
+        });
     }
 }

@@ -1,3 +1,74 @@
-<p>
-  cart works!
-</p>
+<div class="row cart-component">
+    <div class="col-12">
+        <div class="card">
+          <h3>CHECKOUT CART</h3>
+          <hr />
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-7 col-lg-8">
+                <form name="checkout-form" (ngSubmit)="f.form.valid && onCheckout()" #f="ngForm" class="checkout-form row" novalidate autocomplete="off">
+                    <mat-form-field class="col-12" [hideRequiredMarker]="true">
+                        <input matInput type="text" placeholder="Full Name" [(ngModel)]="model.name" required name="name"/>
+                        <mat-error *ngIf="f.submitted && !model.name">
+                            Full Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+        
+                    <mat-form-field class="col-12" [hideRequiredMarker]="true">
+                        <input type="email" matInput type="text" placeholder="Email Address" [(ngModel)]="model.email" required name="email"/>
+                        <mat-error *ngIf="f.submitted && !model.email">
+                            Email Address is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12" [hideRequiredMarker]="true">
+                        <input type="number" matInput type="text" placeholder="Phone Number" [(ngModel)]="model.phone" required name="phone"/>
+                        <mat-error *ngIf="f.submitted && !model.phone">
+                            Phone Number is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12" [hideRequiredMarker]="true">
+                        <input matInput type="text" placeholder="Address" [(ngModel)]="model.address" required name="address"/>
+                        <mat-error *ngIf="f.submitted && !model.address">
+                            Address is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+        
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 btn-container">
+                        <button mat-raised-button [disabled]="loading" color="primary" class="width-100">
+                            <mat-spinner [hidden]="!loading" class="loading-btn" [diameter]="25"></mat-spinner>
+                            <span [hidden]="loading">Checkout</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-md-5 col-lg-4">
+              <div class="product-list">
+                <h3 *ngIf="cartLength == 0">CART IS EMPTY</h3>
+                  <div *ngIf="cartLength >= 1" class="cart-product">
+                      <div *ngFor="let cartProduct of cartData" class="row">
+                          <div class="col-12">
+                              <img class="image" src="{{cartProduct.image}}" alt="{{cartProduct.name}}" />
+                              <h4 class="pname">{{cartProduct.name}}</h4>
+                          </div>
+                          <div class="col-6">
+                              <p class="no-margin">Quantity: {{cartProduct.quantity}}</p>
+                          </div>
+                          <div class="col-6">
+                              <p class="no-margin">Price: {{cartProduct.totalPrice}}</p>
+                          </div>
+                      </div>
+                      <hr />
+                      <div class="row">
+                          <div class="col-12">
+                              <p class="no-margin total">Total: {{cartTotalPrice | formatCurrency}}</p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

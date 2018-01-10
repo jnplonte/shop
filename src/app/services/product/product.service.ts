@@ -13,8 +13,6 @@ export class ProductService {
 
     constructor(private http: HttpClient, @Inject('configService') private configService: any, @Inject('helperService') private helperService: any) {
         this.url = this.configService.data.api.product;
-
-        this.cartList.next(this.helperService.readStorage('cart-list') || []);
     }
 
     private handleError<T> (operation: string = 'operation', result?: T) {
@@ -45,6 +43,10 @@ export class ProductService {
             }),
             catchError(this.handleError('getProduct', []))
         );
+    }
+
+    getInitCartProduct() {
+        return this.cartList.next(this.helperService.readStorage('cart-list') || []);
     }
 
     addCartProduct(id: number, name: string, qty: number = 1) {

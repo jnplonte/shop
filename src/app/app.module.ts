@@ -18,6 +18,7 @@ import { ConfigService } from './services/config/config.service';
 import { HelperService } from './services/helper/helper.service';
 import { AlertService } from './services/alert/alert.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
+import { CheckoutService } from './services/checkout/checkout.service';
 
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
@@ -89,6 +90,7 @@ const appTranslate: Object = {
                   {provide: 'helperService', useClass: HelperService},
                   {provide: 'alertService', useClass: AlertService},
                   {provide: 'authenticationService', useClass: AuthenticationService},
+                  {provide: 'checkoutService', useClass: CheckoutService},
                   {provide: 'translateService', useClass: TranslateService},
                   {provide: 'productService', useClass: ProductService},
                 ],

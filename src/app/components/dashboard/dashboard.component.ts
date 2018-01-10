@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'dashboard',
@@ -8,11 +9,16 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class DashboardComponent implements OnInit {
     private allProducts: Array<any> = [];
 
-    constructor(@Inject('productService') private productService: any, @Inject('alertService') private alertService: any) {
-
+    constructor(private router: Router, @Inject('productService') private productService: any, @Inject('alertService') private alertService: any) {
     }
 
     ngOnInit() {
+        this.router.events.filter(e => e.constructor.name === 'RoutesRecognized').pairwise().subscribe((evnt: any[]) => {
+            if (evnt[0].urlAfterRedirects === '/log-in') {
+                this.productService.getInitCartProduct();
+            }
+        });
+
         this.productService.getAllProducts().subscribe((result) => {
             this.allProducts = result;
         });

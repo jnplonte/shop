@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ToolbarComponent } from './toolbar.component';
+import { FormatCurrencyPipe } from './../../pipes/format-currency/format-currency.pipe';
 
 import { ConfigService } from './../../services/config/config.service';
 import { ProductService } from './../../services/product/product.service';
@@ -20,7 +21,8 @@ describe('ToolbarComponent', () => {
         ConfigService.loadInstance('./base/site/test-config.json', './base/site/language/english.json').then(() => {
           TestBed.configureTestingModule({
             declarations: [
-                ToolbarComponent
+                ToolbarComponent,
+                FormatCurrencyPipe
             ],
             providers: [
                 {provide: 'configService', useFactory: () => ConfigService.getInstance()},

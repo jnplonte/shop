@@ -1,0 +1,16 @@
+@import 'variables';
+
+.cart-component {
+    margin-top: $base-margin;
+
+    .product-list {
+        background: $white;
+        padding: $base-padding;
+    }
+
+    .checkout-form {
+        .btn-container {
+            margin-top: $base-margin;
+        }
+    }
+}

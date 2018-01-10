@@ -7,6 +7,7 @@ import { DebugElement } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe';
 
 import { ConfigService } from './services/config/config.service';
 import { AlertService } from './services/alert/alert.service';
@@ -30,7 +31,8 @@ describe('AppComponent', function () {
             declarations: [
                 AppComponent,
                 ToolbarComponent,
-                AlertComponent
+                AlertComponent,
+                FormatCurrencyPipe
             ],
             providers: [
                 {provide: 'configService', useFactory: () => ConfigService.getInstance()},

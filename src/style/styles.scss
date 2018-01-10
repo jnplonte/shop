@@ -64,6 +64,40 @@ $app-theme: mat-light-theme(
     }
 }
 
+.notify-bubble {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    line-height: normal;
+    background-color: $green;
+    color: $white;
+    font-size: 0.65em;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px $grey;
+    padding: 2px 7px 2px 7px;
+}
+
+.cart-product {
+    .image {
+        height: 40px;
+        width: 40px;
+        display: inline-block
+    }
+    .pname {
+        display: inline-block;
+        margin: 5px 0px;
+    }
+    .total {
+        margin-top: 5px;
+    }
+    .cart,
+    .cart:hover,
+    .cart:active {
+        text-decoration: none;
+        color: $blue;
+    }
+}
+
 .width-100 {
     width: 100%;
 }
@@ -76,8 +110,8 @@ $app-theme: mat-light-theme(
     padding: 0px;
 }
 
-.pull-right {
-    float: right;
+.text-right {
+    text-align: right;
 }
 
 .bold {
